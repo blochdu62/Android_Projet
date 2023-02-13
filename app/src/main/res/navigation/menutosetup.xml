@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menutosetup"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.android_projet.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_setUpFragment2"
+            app:destination="@id/setUpFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/setUpFragment2"
+        android:name="com.example.android_projet.setUpFragment"
+        android:label="fragment_set_up"
+        tools:layout="@layout/fragment_set_up" />
+</navigation>
