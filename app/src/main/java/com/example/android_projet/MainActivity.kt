@@ -7,6 +7,8 @@ import android.view.MenuItem
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+    val selectedButton: Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
