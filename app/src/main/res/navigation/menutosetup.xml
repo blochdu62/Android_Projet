@@ -17,5 +17,14 @@
         android:id="@+id/setUpFragment2"
         android:name="com.example.android_projet.setUpFragment"
         android:label="fragment_set_up"
-        tools:layout="@layout/fragment_set_up" />
+        tools:layout="@layout/fragment_set_up" >
+        <action
+            android:id="@+id/action_setUpFragment2_to_fragment_partie"
+            app:destination="@id/fragment_partie" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_partie"
+        android:name="com.example.android_projet.fragment_partie"
+        android:label="fragment_partie"
+        tools:layout="@layout/fragment_partie" />
 </navigation>
