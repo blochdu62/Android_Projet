@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.TextView
 
@@ -24,27 +26,36 @@ private const val ARG_PARAM2 = "param2"
 
 
     class FragmentPartie : Fragment() {
+    private lateinit var selectedButton: TextView
 
+    @SuppressLint("MissingInflatedId")
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Récupérer la valeur passée comme argument
+        val view = inflater.inflate(R.layout.fragment_partie, container, false)
+        selectedButton = view.findViewById(R.id.selectedButton)
+        val selectedRadioValue = arguments?.getInt("selectedRadioValue", 0) ?: 0
 
-        private lateinit var selectedButton: TextView
+        val parentLayout = view.findViewById<LinearLayout>(R.id.LinearLayout)
 
-        private var radioButtonValue: Int = 0
-
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            // Récupérer la valeur passée comme argument
-            val view = inflater.inflate(R.layout.fragment_partie, container, false)
-            selectedButton = view.findViewById(R.id.selectedButton)
-            val selectedRadioValue = arguments?.getInt("selectedRadioValue", 0) ?: 0
-
-            // Faire quelque chose avec la valeur
-            Log.d("FragmentPartie", "selectedRadioValue = $selectedRadioValue")
-            selectedButton.text = "Selected Button: $selectedRadioValue"
-
-        return view
+        for (i in 1..selectedRadioValue) {
+            val button = Button(requireContext())
+            button.text = "Button $i"
+            button.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            parentLayout.addView(button)
         }
 
+        // Faire quelque chose avec la valeur
+        Log.d("FragmentPartie", "selectedRadioValue = $selectedRadioValue")
+        selectedButton.text = "Selected Button: $selectedRadioValue"
+
+        return view
     }
+
+}
