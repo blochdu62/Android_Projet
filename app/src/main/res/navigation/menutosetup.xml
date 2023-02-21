@@ -11,11 +11,11 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_setUpFragment2"
-            app:destination="@id/setUpFragment2" />
+            app:destination="@id/setUpFragment" />
     </fragment>
     <fragment
-        android:id="@+id/setUpFragment2"
-        android:name="com.example.android_projet.setUpFragment"
+        android:id="@+id/setUpFragment"
+        android:name="com.example.android_projet.SetUpFragment"
         android:label="fragment_set_up"
         tools:layout="@layout/fragment_set_up" >
         <action
@@ -24,7 +24,13 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_partie"
-        android:name="com.example.android_projet.fragment_partie"
+        android:name="com.example.android_projet.FragmentPartie"
         android:label="fragment_partie"
-        tools:layout="@layout/fragment_partie" />
+        tools:layout="@layout/fragment_partie" >
+        <argument
+            android:name="selectedRadioValue"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
 </navigation>
