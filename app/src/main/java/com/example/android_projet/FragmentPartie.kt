@@ -42,7 +42,7 @@ private const val ARG_PARAM2 = "param2"
     private val flagImageView: ImageView? = null
     private lateinit var selectedButton: TextView
 
-    @SuppressLint("MissingInflatedId", "ServiceCast")
+    //@SuppressLint("MissingInflatedId", "ServiceCast")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,7 +54,23 @@ private const val ARG_PARAM2 = "param2"
         // Récupérer la valeur passée comme argument
         val view = inflater.inflate(R.layout.fragment_partie, container, false)
         selectedButton = view.findViewById(R.id.selectedButton)
+
+        val args = FragmentPartieArgs.fromBundle(requireArguments())
+
+        val isSwitchOnEurope = args.selectedEurope
+        val isSwitchOnAsie = args.selectedAsie
+        val isSwitchOnAfrique = args.selectedAfrique
+        val isSwitchOnOceanie = args.selectedOceanie
+        val isSwitchOnAmeriqueNord = args.selectedAmeriqueNord
+        val isSwitchOnAmeriqueSud = args.selectedAmeriqueSud
+
+
+
+
+
         val selectedRadioValue = arguments?.getInt("selectedRadioValue", 0) ?: 0
+       // val isSwitchOnEurope = arguments?.getBoolean("isSwitchOnEurope", false) ?: false
+        //val isSwitchOnEurope = arguments?.getInt("isSwitchOnEurope") == 1
 
         val parentLayout = view.findViewById<LinearLayout>(R.id.LinearLayout)
         val goodPosition = (1..selectedRadioValue).random()
@@ -84,13 +100,20 @@ private const val ARG_PARAM2 = "param2"
                 }
             }
             parentLayout.addView(button)
+
+
         }
 
         // Faire quelque chose avec la valeur
         Log.d("FragmentPartie", "selectedRadioValue = $selectedRadioValue")
         selectedButton.text = "Selected Button: $selectedRadioValue"
 
-
+        Log.d("safe args", "switchValueEurope = $isSwitchOnEurope  ")
+        Log.d("safe args", "switchValueAsie = $isSwitchOnAsie ")
+        Log.d("safe args", "switchValueAfrique = $isSwitchOnAfrique  ")
+        Log.d("safe args", "switchValueOceanie = $isSwitchOnOceanie ")
+        Log.d("safe args", "switchValueAmeriqueNord = $isSwitchOnAmeriqueNord  ")
+        Log.d("safe args", "switchValueAmeriqueSud = $isSwitchOnAmeriqueSud ")
 
         return view
     }

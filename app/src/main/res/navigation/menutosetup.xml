@@ -31,6 +31,30 @@
             android:name="selectedRadioValue"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="selectedEurope"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="selectedAsie"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="selectedAfrique"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="selectedAmeriqueNord"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="selectedAmeriqueSud"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="selectedOceanie"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
 
 </navigation>
