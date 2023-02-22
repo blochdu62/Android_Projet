@@ -68,45 +68,100 @@
         android:id="@+id/textView2"
         android:layout_width="212dp"
         android:layout_height="69dp"
-        android:layout_marginTop="56dp"
-        android:text="Avec Timer"
+        android:layout_marginTop="8dp"
+        android:text="Régions"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="167dp"
-        android:layout_height="91dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-        <RadioButton
-            android:id="@+id/avec_timer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="oui" />
-
-        <RadioButton
-            android:id="@+id/sans_timer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="non" />
-    </RadioGroup>
-
     <Button
         android:id="@+id/lancer_partie"
         android:layout_width="151dp"
         android:layout_height="58dp"
-        android:layout_marginTop="44dp"
         android:text="Go"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/lancer_partie"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/idEurope"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:text="Europe"
+                android:textAlignment="center" />
+
+            <Switch
+                android:id="@+id/idAsie"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:text="Asie"
+                android:textAlignment="center" />
+
+            <Switch
+                android:id="@+id/idAfrique"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:text="Afrique"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/idAmeriqueNord"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_weight="1"
+                android:text="Amerique du nord"
+                android:textAlignment="center" />
+
+            <Switch
+                android:id="@+id/idAmeriqueSud"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_weight="1"
+                android:text="Amerique du sud"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/idOceanie"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Oceanie"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
