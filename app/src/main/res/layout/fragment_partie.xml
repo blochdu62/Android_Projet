@@ -31,4 +31,14 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"></LinearLayout>
 
+    <Button
+        android:id="@+id/reponseEnregistrer"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="116dp"
+        android:text="Valider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
