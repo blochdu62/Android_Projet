@@ -21,12 +21,12 @@ class MyViewModel: ViewModel() {
     var isAmeriqueSudOn: Boolean = false
     var score : Int = 0
 
-    fun incrementScore(isTeamA: Boolean) {
-        if (isTeamA) {
+    fun incrementScore(increment: Boolean) {
+        if (increment) {
             score++
             Log.d("scoreeeeeeeeeee", "score = $score")
         } else {
-            score++
+            score--
         }
     }
 

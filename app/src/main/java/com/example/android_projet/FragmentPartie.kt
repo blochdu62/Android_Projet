@@ -42,18 +42,10 @@ private const val ARG_PARAM2 = "param2"
 
     class FragmentPartie : Fragment() {
 
-    //private lateinit var viewModel: MyViewModel
 
-    //private val viewModel: MyViewModel by viewModels()
     private lateinit var viewModel: MyViewModel
 
-
-    private var random: SecureRandom? = null
-    private val shakeAnimation: Animation? = null
-    private val quizConstraintLayout: ConstraintLayout? = null
-    private val questionNumberTextView: TextView? = null
-    private val flagImageView: ImageView? = null
-    private lateinit var selectedButton: TextView
+    private lateinit var scoreDirect: TextView
 
     fun showFinalScoreDialog() {
         MaterialAlertDialogBuilder(requireContext())
@@ -69,7 +61,6 @@ private const val ARG_PARAM2 = "param2"
             .show()
     }
 
-    //@SuppressLint("MissingInflatedId", "ServiceCast")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -87,14 +78,8 @@ private const val ARG_PARAM2 = "param2"
         var randomNumber = (1..100).random()
         Log.d("aleatoire", "nombre aleatoire = $randomNumber")
 
-        // Récupérer la valeur passée comme
         val view = inflater.inflate(R.layout.fragment_partie, container, false)
-
-       // viewModel  = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
-
          val scoreView = viewModel.score.toString()
-
-
         val selectedRadioValue = viewModel.selectedRadioValue
         val isEuropeOn = viewModel.isEuropeOn
         val isAsieOn = viewModel.isAsieOn
@@ -103,33 +88,18 @@ private const val ARG_PARAM2 = "param2"
         val isAmeriqueNordOn = viewModel.isAmeriqueNordOn
         val isAmeriqueSudOn = viewModel.isAmeriqueSudOn
 
-        selectedButton = view.findViewById(R.id.selectedButton)
 
-        val args = FragmentPartieArgs.fromBundle(requireArguments())
-
-       // val isSwitchOnEurope = args.selectedEurope
-        //val isSwitchOnAsie = args.selectedAsie
-        //val isSwitchOnAfrique = args.selectedAfrique
-        //val isSwitchOnOceanie = args.selectedOceanie
-        //val isSwitchOnAmeriqueNord = args.selectedAmeriqueNord
-        //val isSwitchOnAmeriqueSud = args.selectedAmeriqueSud
-
-
-
-
-
-      //  var selectedRadioValue = arguments?.getInt("selectedRadioValue", 0) ?: 0
+        scoreDirect = view.findViewById(R.id.scoreDirect)
 
 
         val parentLayout = view.findViewById<LinearLayout>(R.id.LinearLayout)
-        Log.d("TTTTTTTTTTTTTTTQQQQQQQQQQQQQQQQQQQTT", "selectedRadioValue = ${viewModel.selectedRadioValue}")
-        Log.d("FragmentPartie", "selectedRadioValue = $selectedRadioValue")
+        Log.d("nombre de reponses", "selectedRadioValue = ${viewModel.selectedRadioValue}")
         var goodPosition = (1..selectedRadioValue).random()
         for (i in 1..selectedRadioValue) {
 
             val button = Button(requireContext())
             if (i == goodPosition) {
-                Log.d("TAG", "la bonne reponse est en position $goodPosition")
+                Log.d("position bonne reponse", "la bonne reponse est en position $goodPosition")
                 button.text = "Bonne position"
 
             }
@@ -157,6 +127,9 @@ private const val ARG_PARAM2 = "param2"
                     Log.d("score", "scoree = ${viewModel.score}")
 
                     findNavController().navigate(R.id.action_fragment_partie_self)
+
+
+
                 }
             }
             parentLayout.addView(button)
@@ -166,14 +139,14 @@ private const val ARG_PARAM2 = "param2"
 
         // Faire quelque chose avec la valeur
         Log.d("FragmentPartie", "selectedRadioValue = $selectedRadioValue")
-        selectedButton.text = "Selected Button: $selectedRadioValue"
+        scoreDirect.text = "votre score est de: ${viewModel.score}"
 
-        Log.d("safe args", "switchValueEurope = $isEuropeOn  ")
-        Log.d("safe args", "switchValueAsie = $isAsieOn ")
-        Log.d("safe args", "switchValueAfrique = $isAfriqueOn  ")
-        Log.d("safe args", "switchValueOceanie = $isOceanieOn ")
-        Log.d("safe args", "switchValueAmeriqueNord = $isAmeriqueNordOn  ")
-        Log.d("safe args", "switchValueAmeriqueSud = $isAmeriqueSudOn ")
+        Log.d("safe args", "switchValueEurope = ${viewModel.isEuropeOn}  ")
+        Log.d("safe args", "switchValueAsie = ${viewModel.isAsieOn}")
+        Log.d("safe args", "switchValueAfrique = ${viewModel.isAfriqueOn}  ")
+        Log.d("safe args", "switchValueOceanie = ${viewModel.isOceanieOn} ")
+        Log.d("safe args", "switchValueAmeriqueNord = ${viewModel.isAmeriqueNordOn}  ")
+        Log.d("safe args", "switchValueAmeriqueSud = ${viewModel.isAmeriqueSudOn} ")
 
         return view
     }
