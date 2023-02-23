@@ -59,17 +59,11 @@
             android:id="@+id/action_fragment_partie_self"
             app:destination="@id/fragment_partie" />
         <action
-            android:id="@+id/action_fragment_partie_to_resultatFragment"
-            app:destination="@id/resultatFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/resultatFragment"
-        android:name="com.example.android_projet.ResultatFragment"
-        android:label="fragment_resultat"
-        tools:layout="@layout/fragment_resultat" >
-        <action
-            android:id="@+id/action_resultatFragment_to_mainFragment"
+            android:id="@+id/action_fragment_partie_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_fragment_partie_to_setUpFragment"
+            app:destination="@id/setUpFragment" />
     </fragment>
 
 </navigation>

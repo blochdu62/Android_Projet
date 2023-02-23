@@ -17,10 +17,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.security.SecureRandom
 import kotlin.random.Random
 
@@ -95,7 +97,19 @@ private const val ARG_PARAM2 = "param2"
         //val isSwitchOnAmeriqueNord = args.selectedAmeriqueNord
         //val isSwitchOnAmeriqueSud = args.selectedAmeriqueSud
 
-
+        fun showFinalScoreDialog() {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(getString(R.string.congratulations))
+                .setMessage(getString(R.string.score))
+                .setCancelable(false)
+                .setNegativeButton(getString(R.string.exit)) { _, _ ->
+                    findNavController().navigate(R.id.action_fragment_partie_to_mainFragment)
+                }
+                .setPositiveButton(getString(R.string.play_again)) { _, _ ->
+                    findNavController().navigate(R.id.action_fragment_partie_to_setUpFragment)
+                }
+                .show()
+        }
 
 
 
@@ -130,7 +144,8 @@ private const val ARG_PARAM2 = "param2"
                         vibrator.vibrate(500)
 
                     }
-                    findNavController().navigate(R.id.action_fragment_partie_to_resultatFragment)
+                    showFinalScoreDialog()
+                    //findNavController().navigate(R.id.action_fragment_partie_to_resultatFragment)
                 }
                 else {
 
