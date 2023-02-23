@@ -43,7 +43,9 @@ private const val ARG_PARAM2 = "param2"
     class FragmentPartie : Fragment() {
 
     //private lateinit var viewModel: MyViewModel
-    private val viewModel: MyViewModel by viewModels()
+
+    //private val viewModel: MyViewModel by viewModels()
+    private lateinit var viewModel: MyViewModel
 
 
     private var random: SecureRandom? = null
@@ -53,12 +55,27 @@ private const val ARG_PARAM2 = "param2"
     private val flagImageView: ImageView? = null
     private lateinit var selectedButton: TextView
 
+    fun showFinalScoreDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.congratulations))
+            .setMessage(getString(R.string.score, viewModel.score))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.exit)) { _, _ ->
+                findNavController().navigate(R.id.action_fragment_partie_to_mainFragment)
+            }
+            .setPositiveButton(getString(R.string.play_again)) { _, _ ->
+                findNavController().navigate(R.id.action_fragment_partie_to_setUpFragment)
+            }
+            .show()
+    }
+
     //@SuppressLint("MissingInflatedId", "ServiceCast")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
 
         // Désactiver le bouton retour physique
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -97,19 +114,7 @@ private const val ARG_PARAM2 = "param2"
         //val isSwitchOnAmeriqueNord = args.selectedAmeriqueNord
         //val isSwitchOnAmeriqueSud = args.selectedAmeriqueSud
 
-        fun showFinalScoreDialog() {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle(getString(R.string.congratulations))
-                .setMessage(getString(R.string.score))
-                .setCancelable(false)
-                .setNegativeButton(getString(R.string.exit)) { _, _ ->
-                    findNavController().navigate(R.id.action_fragment_partie_to_mainFragment)
-                }
-                .setPositiveButton(getString(R.string.play_again)) { _, _ ->
-                    findNavController().navigate(R.id.action_fragment_partie_to_setUpFragment)
-                }
-                .show()
-        }
+
 
 
 
@@ -145,12 +150,12 @@ private const val ARG_PARAM2 = "param2"
 
                     }
                     showFinalScoreDialog()
-                    //findNavController().navigate(R.id.action_fragment_partie_to_resultatFragment)
                 }
                 else {
 
                     viewModel.incrementScore(true)
-                    Log.d("score", "scoree = $scoreView")
+                    Log.d("score", "scoree = ${viewModel.score}")
+
                     findNavController().navigate(R.id.action_fragment_partie_self)
                 }
             }

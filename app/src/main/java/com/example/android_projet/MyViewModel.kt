@@ -8,13 +8,13 @@ import androidx.lifecycle.ViewModel
 class MyViewModel: ViewModel() {
 
     //var selectedRadioValue = 0
-    var selectedRadioValue: Int = 4
+    var selectedRadioValue: Int = 0
         @JvmName("setSelectedRadioValueKotlin")
         set(value) {
             field = value
         }
-    var isEuropeOn: Boolean = true
-    var isAsieOn: Boolean = true
+    var isEuropeOn: Boolean = false
+    var isAsieOn: Boolean = false
     var isAfriqueOn: Boolean = false
     var isOceanieOn: Boolean = false
     var isAmeriqueNordOn: Boolean = false
@@ -26,7 +26,7 @@ class MyViewModel: ViewModel() {
             score++
             Log.d("scoreeeeeeeeeee", "score = $score")
         } else {
-            score--
+            score++
         }
     }
 

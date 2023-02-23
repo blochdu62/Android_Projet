@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
 
@@ -27,13 +28,14 @@ private const val ARG_PARAM2 = "param2"
  */
 class SetUpFragment : Fragment() {
 
-        private val viewModel: MyViewModel by viewModels()
+    private lateinit var viewModel: MyViewModel
 
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
+            viewModel = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
             val view = inflater.inflate(R.layout.fragment_set_up, container, false)
 
             val button = view.findViewById<Button>(R.id.lancer_partie)
