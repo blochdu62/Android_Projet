@@ -1,0 +1,63 @@
+package com.example.android_projet
+
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+
+class MyViewModel: ViewModel() {
+
+    //var selectedRadioValue = 0
+    var selectedRadioValue: Int = 4
+        @JvmName("setSelectedRadioValueKotlin")
+        set(value) {
+            field = value
+        }
+    var isEuropeOn: Boolean = true
+    var isAsieOn: Boolean = true
+    var isAfriqueOn: Boolean = false
+    var isOceanieOn: Boolean = false
+    var isAmeriqueNordOn: Boolean = false
+    var isAmeriqueSudOn: Boolean = false
+    var score : Int = 0
+
+    fun incrementScore(isTeamA: Boolean) {
+        if (isTeamA) {
+            score++
+            Log.d("scoreeeeeeeeeee", "score = $score")
+        } else {
+            score--
+        }
+    }
+
+
+
+    fun setSelectedRadioValue(value: Int) {
+        selectedRadioValue = value
+
+    }
+
+    fun setIsEuropeOn(value: Boolean) {
+        isEuropeOn = value
+    }
+
+    fun setIsAsieOn(value: Boolean) {
+        isAsieOn = value
+    }
+
+    fun setIsAfriqueOn(value: Boolean) {
+        isAfriqueOn = value
+    }
+
+    fun setIsOceanieOn(value: Boolean) {
+        isOceanieOn = value
+    }
+
+    fun setIsAmeriqueNordOn(value: Boolean) {
+        isAmeriqueNordOn = value
+    }
+
+    fun setIsAmeriqueSudOn(value: Boolean) {
+        isAmeriqueSudOn = value
+    }
+}
