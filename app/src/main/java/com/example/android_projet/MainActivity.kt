@@ -47,10 +47,7 @@ class MainActivity : AppCompatActivity() {
             R.id.Infos ->{ selectedOption ="Infos"
                 showInfosDialog()
             }
-            R.id.Quitter -> {
-                selectedOption ="Quitter"
 
-            }
         }
 
         Toast.makeText(this,"Option : " + selectedOption, Toast.LENGTH_SHORT).show()

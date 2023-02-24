@@ -3,9 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="congratulations">Partie terminé</string>
-    <string name="score">voici votre score: %d</string>
-    <string name="exit">quitter</string>
+    <string name="score">Voici votre score: %d</string>
+    <string name="exit">Quitter</string>
     <string name="play_again">Rejouer</string>
-    <string name="infos">information</string>
-    <string name="infoApps">Application developpée par Adam D Thibaud D Matéo B</string>
+    <string name="infos">Informations</string>
+    <string name="infoApps">Application developpée par Adam D Thibaud D Matéo B  \n \n V1.1.1</string>
 </resources>

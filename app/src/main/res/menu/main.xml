@@ -10,10 +10,9 @@
     <group android:id="@+id/menu_items">
         <item android:title="Jouer"
             android:id="@+id/Jouer"/>
-        <item android:title="Quitter"
-            android:id="@+id/Infos"/>
-        <item android:title="Infos"
-            android:id="@+id/Quitter"/>
+        <item
+            android:id="@+id/Infos"
+            android:title="Infos" />
     </group>
 
 </menu>
