@@ -6,4 +6,6 @@
     <string name="score">voici votre score: %d</string>
     <string name="exit">quitter</string>
     <string name="play_again">Rejouer</string>
+    <string name="infos">information</string>
+    <string name="infoApps">Application developpée par Adam D Thibaud D Matéo B</string>
 </resources>

@@ -73,7 +73,7 @@ class SetUpFragment : Fragment() {
                     R.id.deux_solutions -> 2
                     R.id.trois_solutions -> 3
                     R.id.quatre_solutions -> 4
-                    else -> 0
+                    else -> 4
                 }
 
                 val action = SetUpFragmentDirections.actionSetUpFragment2ToFragmentPartie(
@@ -97,19 +97,3 @@ class SetUpFragment : Fragment() {
     }
 
 
-    class PartieFragment : Fragment() {
-
-        private val viewModel: MyViewModel by viewModels()
-
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            val view = inflater.inflate(R.layout.fragment_partie, container, false)
-
-            // Utilisation de viewModel.selectedRadioValue et viewModel.isEuropeOn, etc.
-
-            return view
-        }
-    }
