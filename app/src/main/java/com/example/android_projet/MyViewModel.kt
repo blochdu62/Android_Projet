@@ -26,7 +26,7 @@ class MyViewModel: ViewModel() {
             score++
             Log.d("scoreeeeeeeeeee", "score = $score")
         } else {
-            score--
+            score=0
         }
     }
 

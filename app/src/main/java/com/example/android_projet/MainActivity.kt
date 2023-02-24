@@ -6,7 +6,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
     val selectedButton: Int? = null
@@ -32,20 +36,31 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
+
+
+
         var selectedOption = ""
 
-        when(item?.itemId){
-
-
+        when(item?.itemId) {
             R.id.help -> selectedOption ="Help"
             R.id.Jouer -> selectedOption ="Jouer"
-            R.id.Quitter -> selectedOption ="Quitter"
-            R.id.Infos -> selectedOption ="Infos"
+            R.id.Infos ->{ selectedOption ="Infos"
+                showInfosDialog()
+            }
+            R.id.Quitter -> {
+                selectedOption ="Quitter"
+
+            }
         }
 
         Toast.makeText(this,"Option : " + selectedOption, Toast.LENGTH_SHORT).show()
 
         return super.onOptionsItemSelected(item)
     }
-
+    private fun showInfosDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.infos))
+            .setMessage(getString(R.string.infoApps))
+            .show()
+    }
 }

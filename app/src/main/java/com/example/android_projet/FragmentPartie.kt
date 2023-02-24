@@ -53,9 +53,11 @@ private const val ARG_PARAM2 = "param2"
             .setMessage(getString(R.string.score, viewModel.score))
             .setCancelable(false)
             .setNegativeButton(getString(R.string.exit)) { _, _ ->
+                viewModel.incrementScore(false)
                 findNavController().navigate(R.id.action_fragment_partie_to_mainFragment)
             }
             .setPositiveButton(getString(R.string.play_again)) { _, _ ->
+                viewModel.incrementScore(false)
                 findNavController().navigate(R.id.action_fragment_partie_to_setUpFragment)
             }
             .show()
