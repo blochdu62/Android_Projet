@@ -141,7 +141,7 @@ private const val ARG_PARAM2 = "param2"
 
         // Faire quelque chose avec la valeur
         Log.d("FragmentPartie", "selectedRadioValue = $selectedRadioValue")
-        scoreDirect.text = "votre score est de: ${viewModel.score}"
+        scoreDirect.text = "SCORE : ${viewModel.score}"
 
         Log.d("safe args", "switchValueEurope = ${viewModel.isEuropeOn}  ")
         Log.d("safe args", "switchValueAsie = ${viewModel.isAsieOn}")
