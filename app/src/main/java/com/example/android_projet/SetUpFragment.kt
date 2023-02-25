@@ -69,7 +69,6 @@ class SetUpFragment : Fragment() {
 
             button.setOnClickListener {
                 viewModel.selectedRadioValue = when (radioGroup.checkedRadioButtonId) {
-                    R.id.une_solution -> 1
                     R.id.deux_solutions -> 2
                     R.id.trois_solutions -> 3
                     R.id.quatre_solutions -> 4
