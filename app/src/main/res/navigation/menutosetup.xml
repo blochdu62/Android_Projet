@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_setUpFragment2_to_fragment_partie"
             app:destination="@id/fragment_partie" />
+        <action
+            android:id="@+id/action_setUpFragment_to_countryFragment"
+            app:destination="@id/countryFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_partie"
@@ -65,5 +68,10 @@
             android:id="@+id/action_fragment_partie_to_setUpFragment"
             app:destination="@id/setUpFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/countryFragment"
+        android:name="com.example.android_projet.CountryFragment"
+        android:label="fragment_country"
+        tools:layout="@layout/fragment_country" />
 
 </navigation>

@@ -2,6 +2,7 @@ package com.example.android_projet
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.PictureDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
@@ -22,7 +23,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.caverock.androidsvg.SVG
+import com.example.android_projet.ApiClient.apiService
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
 import java.security.SecureRandom
 import kotlin.random.Random
 
@@ -40,7 +50,7 @@ private const val ARG_PARAM2 = "param2"
 
 
 
-    class FragmentPartie : Fragment() {
+class FragmentPartie : Fragment() {
 
 
     private lateinit var viewModel: MyViewModel
@@ -63,6 +73,7 @@ private const val ARG_PARAM2 = "param2"
             .show()
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -77,11 +88,9 @@ private const val ARG_PARAM2 = "param2"
             }
         })
 
-        var randomNumber = (1..100).random()
-        Log.d("aleatoire", "nombre aleatoire = $randomNumber")
 
         val view = inflater.inflate(R.layout.fragment_partie, container, false)
-         val scoreView = viewModel.score.toString()
+        val scoreView = viewModel.score.toString()
         val selectedRadioValue = viewModel.selectedRadioValue
         val isEuropeOn = viewModel.isEuropeOn
         val isAsieOn = viewModel.isAsieOn
@@ -97,47 +106,99 @@ private const val ARG_PARAM2 = "param2"
         val parentLayout = view.findViewById<LinearLayout>(R.id.LinearLayout)
         Log.d("nombre de reponses", "selectedRadioValue = ${viewModel.selectedRadioValue}")
         var goodPosition = (1..selectedRadioValue).random()
-        for (i in 1..selectedRadioValue) {
 
-            val button = Button(requireContext())
-            if (i == goodPosition) {
-                Log.d("position bonne reponse", "la bonne reponse est en position $goodPosition")
-                button.text = "Bonne position"
 
-            }
-            else {
-                button.text = "Button $i"
-            }
-            button.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            button.setOnClickListener {
-                if (i != goodPosition) {
-                    val vibrator = requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
-                    } else {
-                        vibrator.vibrate(500)
+
+
+
+        val flagImageView = view.findViewById<ImageView>(R.id.flag)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+
+                val response = apiService.getFlags()
+                val json = response.string()
+                val jsonObject = JSONObject(json)
+                val dataArray = jsonObject.getJSONArray("data")
+                val data = Gson().fromJson(dataArray.toString(), Array<CountryData>::class.java)
+
+                val randomCountry = data.random()
+                val imageUrl = randomCountry.flag
+                val nameCountry = randomCountry.name
+
+
+
+                // load the SVG from the URL
+                val url = URL(imageUrl)
+                val connection = url.openConnection() as HttpURLConnection
+                connection.doInput = true
+                connection.connect()
+                val input = connection.inputStream
+                val svg = SVG.getFromInputStream(input)
+
+                // draw the SVG on a canvas
+                val picture = svg.renderToPicture()
+                val drawable = PictureDrawable(picture)
+
+                // display the drawable in the image view
+                activity?.runOnUiThread {
+                    flagImageView.setImageDrawable(drawable)
+                    for (i in 1..selectedRadioValue) {
+
+                        val button = Button(requireContext())
+                        if (i == goodPosition) {
+                            Log.d("position bonne reponse", "la bonne reponse est en position $goodPosition")
+                            button.text = nameCountry
+
+                        }
+                        else {
+                            val randomCountryFalse = data.random()
+                            val nameCountryFalse = randomCountryFalse.name
+                            if  (nameCountryFalse==nameCountry){
+                                val randomCountryFalse2 = data.random()
+                                val nameCountryFalse2 = randomCountryFalse2.name
+                                button.text =  nameCountryFalse2
+                            }
+                            else
+                            button.text =  nameCountryFalse
+                        }
+                        button.layoutParams = LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        )
+                        button.setOnClickListener {
+                            if (i != goodPosition) {
+                                val vibrator = requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
+                                } else {
+                                    vibrator.vibrate(500)
+
+                                }
+                                showFinalScoreDialog()
+                            }
+                            else {
+
+                                viewModel.incrementScore(true)
+                                Log.d("score", "scoree = ${viewModel.score}")
+
+                                findNavController().navigate(R.id.action_fragment_partie_self)
+
+
+
+                            }
+                        }
+                        parentLayout.addView(button)
+
 
                     }
-                    showFinalScoreDialog()
                 }
-                else {
 
-                    viewModel.incrementScore(true)
-                    Log.d("score", "scoree = ${viewModel.score}")
-
-                    findNavController().navigate(R.id.action_fragment_partie_self)
-
-
-
-                }
+            } catch (e: Exception) {
+                Log.e("CountryFragment", "Error loading flag image: ${e.message}")
             }
-            parentLayout.addView(button)
 
 
-        }
 
         // Faire quelque chose avec la valeur
         Log.d("FragmentPartie", "selectedRadioValue = $selectedRadioValue")
@@ -150,7 +211,14 @@ private const val ARG_PARAM2 = "param2"
         Log.d("safe args", "switchValueAmeriqueNord = ${viewModel.isAmeriqueNordOn}  ")
         Log.d("safe args", "switchValueAmeriqueSud = ${viewModel.isAmeriqueSudOn} ")
 
+
+        }
+
         return view
     }
 
+
 }
+
+
+
