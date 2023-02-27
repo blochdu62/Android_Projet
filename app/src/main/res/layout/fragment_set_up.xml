@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/Jouer"
-        android:layout_width="296dp"
-        android:layout_height="32dp"
+        android:layout_width="145dp"
+        android:layout_height="37dp"
         android:layout_marginTop="16dp"
         android:text="Game Setup"
         android:textAlignment="center"
@@ -82,7 +82,7 @@
         android:layout_width="172dp"
         android:layout_height="24dp"
         android:layout_marginTop="52dp"
-        android:text="Number of available choices :"
+        android:text="Number of choices :"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.179"
