@@ -13,6 +13,7 @@ class MyViewModel: ViewModel() {
         set(value) {
             field = value
         }
+    var isSelectAllOn: Boolean = false
     var isEuropeOn: Boolean = false
     var isAsieOn: Boolean = false
     var isAfriqueOn: Boolean = false
@@ -50,7 +51,6 @@ class MyViewModel: ViewModel() {
 
     fun setSelectedRadioValue(value: Int) {
         selectedRadioValue = value
-
     }
     fun setnamePlayer(value: String) {
         namePlayer = value

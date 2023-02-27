@@ -36,9 +36,9 @@ class SetUpFragment : Fragment() {
         ): View? {
             viewModel = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
             val view = inflater.inflate(R.layout.fragment_set_up, container, false)
-
             val button = view.findViewById<Button>(R.id.lancer_partie)
             val radioGroup: RadioGroup = view.findViewById(R.id.radioGroup)
+            val switchAll: Switch = view.findViewById(R.id.idSelectAll)
             val switchEurope: Switch = view.findViewById(R.id.idEurope)
             val switchAsie: Switch = view.findViewById(R.id.idAsie)
             val switchAfrique: Switch = view.findViewById(R.id.idAfrique)
@@ -46,6 +46,9 @@ class SetUpFragment : Fragment() {
             val switchAmeriqueNord: Switch = view.findViewById(R.id.idAmeriqueNord)
             val switchAmeriqueSud: Switch = view.findViewById(R.id.idAmeriqueSud)
 
+            switchAll.setOnCheckedChangeListener { buttonView, isChecked ->
+                viewModel.setIsAfriqueOn(value = true)
+            }
             switchEurope.setOnCheckedChangeListener { buttonView, isChecked ->
                 viewModel.isEuropeOn = isChecked
             }
@@ -83,14 +86,46 @@ class SetUpFragment : Fragment() {
                     viewModel.isAmeriqueNordOn,
                     viewModel.isAmeriqueSudOn
                 )
-                Log.d("TTTTTTTTTTTTTTTTT", "selectedRadioValue = ${viewModel.selectedRadioValue}")
-                Log.d("AAAAAAAAAAAAaa", "selectedRadioValue = ${viewModel.isEuropeOn}")
-
                 findNavController().navigate(action)
             }
 
+
             return view
         }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
+        val switchAfrica : Switch = view.findViewById(R.id.idAfrique)
+        val switchNorthAmerica : Switch = view.findViewById(R.id.idAmeriqueNord)
+        val switchSouthAmerica : Switch = view.findViewById(R.id.idAmeriqueSud)
+        val switchEurope : Switch = view.findViewById(R.id.idEurope)
+        val switchAsia : Switch = view.findViewById(R.id.idAsie)
+        val switchOceania : Switch = view.findViewById(R.id.idOceanie)
+
+
+        view.findViewById<Switch>(R.id.idSelectAll).setOnClickListener {
+            val switchButton: Switch = view.findViewById(R.id.idSelectAll)
+
+            switchButton.isChecked = switchAfrica.isChecked && switchNorthAmerica.isChecked && switchSouthAmerica.isChecked &&
+                    switchEurope.isChecked && switchAsia.isChecked && switchOceania.isChecked
+
+            if (switchButton.isChecked) {
+                switchAfrica.isChecked = true
+                switchNorthAmerica.isChecked = true
+                switchSouthAmerica.isChecked = true
+                switchEurope.isChecked = true
+                switchAsia.isChecked = true
+                switchOceania.isChecked = true
+            } else {
+                switchAfrica.isChecked = false
+                switchNorthAmerica.isChecked = false
+                switchSouthAmerica.isChecked = false
+                switchEurope.isChecked = false
+                switchAsia.isChecked = false
+                switchOceania.isChecked = false
+            }
+        }
+
+    }
 
     }
 
