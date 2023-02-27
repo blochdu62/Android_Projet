@@ -25,7 +25,7 @@
         android:layout_width="296dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
-        android:text="Configuration de la partie"
+        android:text="Game Setup"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -49,19 +49,19 @@
             android:id="@+id/deux_solutions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2 solutions" />
+            android:text="2 choices" />
 
         <RadioButton
             android:id="@+id/trois_solutions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="3 solutions" />
+            android:text="3 choices" />
 
         <RadioButton
             android:id="@+id/quatre_solutions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="4 solutions" />
+            android:text="4 choices" />
     </RadioGroup>
 
     <ImageView
@@ -82,8 +82,7 @@
         android:layout_width="172dp"
         android:layout_height="24dp"
         android:layout_marginTop="52dp"
-        android:text="Nombre de choix possible :"
-        android:textAlignment="center"
+        android:text="Number of available choices :"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.179"
@@ -95,7 +94,7 @@
         android:layout_width="137dp"
         android:layout_height="22dp"
         android:layout_marginTop="32dp"
-        android:text="Régions disponibles :"
+        android:text="Available regions :"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +155,7 @@
                 android:layout_height="37dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="8dp"
-                android:text="Afrique" />
+                android:text="Africa" />
 
         </LinearLayout>
 
@@ -178,7 +177,7 @@
                 android:layout_height="37dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="8dp"
-                android:text="Amerique du nord" />
+                android:text="North America" />
 
         </LinearLayout>
 
@@ -200,7 +199,7 @@
                 android:layout_height="37dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="8dp"
-                android:text="Amerique du sud" />
+                android:text="South America" />
 
         </LinearLayout>
 
@@ -222,7 +221,7 @@
                 android:layout_height="37dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="8dp"
-                android:text="Asie" />
+                android:text="Asia" />
 
         </LinearLayout>
 
@@ -266,7 +265,7 @@
                 android:layout_height="37dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="8dp"
-                android:text="Oceanie" />
+                android:text="Oceania" />
 
         </LinearLayout>
     </LinearLayout>
