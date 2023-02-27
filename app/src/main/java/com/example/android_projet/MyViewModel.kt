@@ -20,7 +20,7 @@ class MyViewModel: ViewModel() {
     var isAmeriqueNordOn: Boolean = false
     var isAmeriqueSudOn: Boolean = false
     var score : Int = 0
-    var namePlayer : String ="Guess"
+    var namePlayer : String ="Guest"
 
     fun incrementScore(increment: Boolean) {
         if (increment) {
