@@ -57,11 +57,13 @@ class FragmentPartie : Fragment() {
 
     private lateinit var scoreDirect: TextView
 
-    fun showFinalScoreDialog() {
+    fun showFinalScoreDialog(nameCountry :String) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.congratulations))
-            .setMessage(getString(R.string.score, viewModel.score))
+            .setMessage(getString(R.string.bonneReponse) + nameCountry +"\n" +  getString(R.string.score, viewModel.score) )
+            //.setMessage(getString(R.string.score, viewModel.score))
             .setCancelable(false)
+
             .setNegativeButton(getString(R.string.exit)) { _, _ ->
                 viewModel.incrementScore(false)
                 findNavController().navigate(R.id.action_fragment_partie_to_mainFragment)
@@ -74,6 +76,7 @@ class FragmentPartie : Fragment() {
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -175,7 +178,7 @@ class FragmentPartie : Fragment() {
                                     vibrator.vibrate(500)
 
                                 }
-                                showFinalScoreDialog()
+                                showFinalScoreDialog(nameCountry)
                             }
                             else {
 

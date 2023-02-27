@@ -20,6 +20,7 @@ class MyViewModel: ViewModel() {
     var isAmeriqueNordOn: Boolean = false
     var isAmeriqueSudOn: Boolean = false
     var score : Int = 0
+    var namePlayer : String ="Guess"
 
     fun incrementScore(increment: Boolean) {
         if (increment) {
@@ -36,6 +37,11 @@ class MyViewModel: ViewModel() {
         selectedRadioValue = value
 
     }
+    fun setnamePlayer(value: String) {
+        namePlayer = value
+
+    }
+
 
     fun setIsEuropeOn(value: Boolean) {
         isEuropeOn = value

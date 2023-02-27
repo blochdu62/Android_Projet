@@ -2,10 +2,11 @@
     <string name="app_name">Guess The Flag</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="congratulations">Partie terminé</string>
-    <string name="score">Voici votre score: %d</string>
+    <string name="congratulations">Game finish</string>
+    <string name="score">Your score: %d</string>
     <string name="exit">Quitter</string>
-    <string name="play_again">Rejouer</string>
+    <string name="play_again">Play again</string>
     <string name="infos">Informations</string>
-    <string name="infoApps">Application developpée par Adam D Thibaud D Matéo B  \n \n V1.1.1</string>
+    <string name="infoApps">Application dev by Adam D Thibaud D Matéo B  \n \n V1.1.1</string>
+    <string name="bonneReponse">"The good answer is: "</string>
 </resources>
