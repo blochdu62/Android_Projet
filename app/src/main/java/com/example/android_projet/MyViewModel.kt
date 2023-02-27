@@ -25,7 +25,7 @@ class MyViewModel: ViewModel() {
     fun incrementScore(increment: Boolean) {
         if (increment) {
             score++
-            Log.d("scoreeeeeeeeeee", "score = $score")
+            Log.d("score", "score = $score")
         } else {
             score=0
         }

@@ -2,6 +2,7 @@ package com.example.android_projet
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.drawable.PictureDrawable
 import android.os.Build
 import android.os.Bundle
@@ -74,6 +75,8 @@ class FragmentPartie : Fragment() {
             }
             .show()
     }
+
+
 
 
     @SuppressLint("SuspiciousIndentation")
