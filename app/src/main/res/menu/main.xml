@@ -8,8 +8,6 @@
         android:id="@+id/help"/>
 
     <group android:id="@+id/menu_items">
-        <item android:title="Jouer"
-            android:id="@+id/Jouer"/>
         <item
             android:id="@+id/Infos"
             android:title="Infos" />

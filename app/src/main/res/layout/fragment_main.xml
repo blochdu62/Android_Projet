@@ -22,7 +22,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/Jouer"
+        android:id="@+id/RejouerRes"
         android:layout_width="199dp"
         android:layout_height="65dp"
         android:background="@drawable/button_rounded"
@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Jouer"
+        app:layout_constraintTop_toBottomOf="@+id/RejouerRes"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

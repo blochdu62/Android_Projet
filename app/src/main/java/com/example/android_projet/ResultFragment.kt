@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,11 +18,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
+ * Use the [ResultFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainFragment : Fragment() {
-    private lateinit var viewModel: MyViewModel
+class ResultFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,19 +38,25 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
-
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+       // val rv: RecyclerView = view.findViewById(R.id.rv)
+       // rv.layoutManager = LinearLayoutManager(activity)
+
+        //var adapter: ListAdapter = ListAdapter(
+        //    List<Scores> =
+       // )
+
+        //rv.adapter = adapter
+        return inflater.inflate(R.layout.fragment_result, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<Button>(R.id.RejouerRes).setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_setUpFragment2)
+            findNavController().navigate(R.id.action_resultFragment_to_setUpFragment)
         }
-
     }
+
 
     companion object {
         /**
@@ -58,12 +65,12 @@ class MainFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment BlankFragment.
+         * @return A new instance of fragment ResultFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
+            ResultFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

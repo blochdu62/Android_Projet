@@ -12,16 +12,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.caverock.androidsvg.SVG
@@ -34,12 +30,8 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
-import java.security.SecureRandom
-import kotlin.random.Random
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -64,10 +56,9 @@ class FragmentPartie : Fragment() {
             .setMessage(getString(R.string.bonneReponse) + nameCountry +"\n" +  getString(R.string.score, viewModel.score) )
             //.setMessage(getString(R.string.score, viewModel.score))
             .setCancelable(false)
-
-            .setNegativeButton(getString(R.string.exit)) { _, _ ->
+            .setNegativeButton(getString(R.string.scoreBoard)) { _, _ ->
                 viewModel.incrementScore(false)
-                findNavController().navigate(R.id.action_fragment_partie_to_mainFragment)
+                findNavController().navigate(R.id.action_fragment_partie_to_resultFragment)
             }
             .setPositiveButton(getString(R.string.play_again)) { _, _ ->
                 viewModel.incrementScore(false)
@@ -160,7 +151,7 @@ class FragmentPartie : Fragment() {
                         else {
                             val randomCountryFalse = data.random()
                             val nameCountryFalse = randomCountryFalse.name
-                            if  (nameCountryFalse==nameCountry){
+                                if  (nameCountryFalse==nameCountry){
                                 val randomCountryFalse2 = data.random()
                                 val nameCountryFalse2 = randomCountryFalse2.name
                                 button.text =  nameCountryFalse2

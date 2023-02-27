@@ -62,16 +62,25 @@
             android:id="@+id/action_fragment_partie_self"
             app:destination="@id/fragment_partie" />
         <action
-            android:id="@+id/action_fragment_partie_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
             android:id="@+id/action_fragment_partie_to_setUpFragment"
             app:destination="@id/setUpFragment" />
+        <action
+            android:id="@+id/action_fragment_partie_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
     <fragment
         android:id="@+id/countryFragment"
         android:name="com.example.android_projet.CountryFragment"
         android:label="fragment_country"
         tools:layout="@layout/fragment_country" />
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.android_projet.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_resultFragment_to_setUpFragment"
+            app:destination="@id/setUpFragment" />
+    </fragment>
 
 </navigation>
