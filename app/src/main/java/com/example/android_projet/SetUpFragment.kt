@@ -105,9 +105,6 @@ class SetUpFragment : Fragment() {
         view.findViewById<Switch>(R.id.idSelectAll).setOnClickListener {
             val switchButton: Switch = view.findViewById(R.id.idSelectAll)
 
-            switchButton.isChecked = switchAfrica.isChecked && switchNorthAmerica.isChecked && switchSouthAmerica.isChecked &&
-                    switchEurope.isChecked && switchAsia.isChecked && switchOceania.isChecked
-
             if (switchButton.isChecked) {
                 switchAfrica.isChecked = true
                 switchNorthAmerica.isChecked = true

@@ -135,8 +135,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="191dp"
-        android:layout_height="218dp"
+        android:layout_width="247dp"
+        android:layout_height="275dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/lancer_partie"
         app:layout_constraintEnd_toEndOf="parent"
@@ -153,8 +153,8 @@
                 android:id="@+id/idSelectAll"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="1"
                 android:text="Select all" />
 
         </LinearLayout>
@@ -175,8 +175,8 @@
                 android:id="@+id/idAfrique"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="1"
                 android:text="Africa" />
 
         </LinearLayout>
@@ -197,8 +197,8 @@
                 android:id="@+id/idAmeriqueNord"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="1"
                 android:text="North America" />
 
         </LinearLayout>
@@ -219,8 +219,8 @@
                 android:id="@+id/idAmeriqueSud"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="1"
                 android:text="South America" />
 
         </LinearLayout>
@@ -241,8 +241,8 @@
                 android:id="@+id/idAsie"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="1"
                 android:text="Asia" />
 
         </LinearLayout>
@@ -263,8 +263,8 @@
                 android:id="@+id/idEurope"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="1"
                 android:text="Europe" />
 
         </LinearLayout>
@@ -285,8 +285,8 @@
                 android:id="@+id/idOceanie"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="8dp"
+                android:layout_weight="1"
                 android:text="Oceania" />
 
         </LinearLayout>
