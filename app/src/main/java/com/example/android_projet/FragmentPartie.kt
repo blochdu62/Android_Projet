@@ -175,8 +175,16 @@ class FragmentPartie : Fragment() {
                                 showFinalScoreDialog(nameCountry)
                             }
                             else {
+                                if (selectedRadioValue==4){
+                                    viewModel.incrementScore3(true)
+                                }
+                                if (selectedRadioValue==3){
+                                    viewModel.incrementScore2(true)
+                                }
+                                if (selectedRadioValue==2){
+                                    viewModel.incrementScore(true)
+                                }
 
-                                viewModel.incrementScore(true)
                                 Log.d("score", "scoree = ${viewModel.score}")
 
                                 findNavController().navigate(R.id.action_fragment_partie_self)

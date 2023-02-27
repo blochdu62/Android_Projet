@@ -30,7 +30,22 @@ class MyViewModel: ViewModel() {
             score=0
         }
     }
-
+    fun incrementScore2(increment: Boolean) {
+        if (increment) {
+            score=score+2
+            Log.d("score", "score = $score")
+        } else {
+            score=0
+        }
+    }
+    fun incrementScore3(increment: Boolean) {
+        if (increment) {
+            score=score+3
+            Log.d("score", "score = $score")
+        } else {
+            score=0
+        }
+    }
 
 
     fun setSelectedRadioValue(value: Int) {
