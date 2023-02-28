@@ -1,6 +1,6 @@
 package com.example.android_projet
 
-data class CountryData(
+data class CountryDataClass(
     val name: String,
     val flag: String,
     val iso2: String,

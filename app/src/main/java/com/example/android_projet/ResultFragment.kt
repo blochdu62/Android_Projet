@@ -1,5 +1,6 @@
 package com.example.android_projet
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,7 +23,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ResultFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -32,18 +32,22 @@ class ResultFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        val monEntier = sharedPref?.getInt("Score", 0)
+        print("Result Score" + monEntier)
         // Inflate the layout for this fragment
-       // val rv: RecyclerView = view.findViewById(R.id.rv)
-       // rv.layoutManager = LinearLayoutManager(activity)
+        //val rv: RecyclerView = view.findViewById(R.id.rv)
+        //rv.layoutManager = LinearLayoutManager(activity)
 
         //var adapter: ListAdapter = ListAdapter(
-        //    List<Scores> =
+            //List<Scores> =
        // )
 
         //rv.adapter = adapter

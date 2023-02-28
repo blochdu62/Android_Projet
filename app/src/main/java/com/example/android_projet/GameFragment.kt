@@ -2,7 +2,6 @@ package com.example.android_projet
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.drawable.PictureDrawable
 import android.os.Build
 import android.os.Bundle
@@ -43,18 +42,21 @@ private const val ARG_PARAM2 = "param2"
 
 
 
-class FragmentPartie : Fragment() {
-
+class GameFragment : Fragment() {
 
     private lateinit var viewModel: MyViewModel
 
     private lateinit var scoreDirect: TextView
 
     fun showFinalScoreDialog(nameCountry :String) {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putInt(getString(R.string.score), viewModel.score)
+            apply()
+        }
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.congratulations))
             .setMessage(getString(R.string.bonneReponse) + nameCountry +"\n" +  getString(R.string.score, viewModel.score) )
-            //.setMessage(getString(R.string.score, viewModel.score))
             .setCancelable(false)
             .setNegativeButton(getString(R.string.scoreBoard)) { _, _ ->
                 viewModel.incrementScore(false)
@@ -65,6 +67,7 @@ class FragmentPartie : Fragment() {
                 findNavController().navigate(R.id.action_fragment_partie_to_setUpFragment)
             }
             .show()
+        println( sharedPref.getInt(getString(R.string.score), viewModel.score))
     }
 
 
@@ -86,15 +89,15 @@ class FragmentPartie : Fragment() {
         })
 
 
-        val view = inflater.inflate(R.layout.fragment_partie, container, false)
+        val view = inflater.inflate(R.layout.fragment_game, container, false)
         val scoreView = viewModel.score.toString()
         val selectedRadioValue = viewModel.selectedRadioValue
         val isEuropeOn = viewModel.isEuropeOn
-        val isAsieOn = viewModel.isAsieOn
-        val isAfriqueOn = viewModel.isAfriqueOn
-        val isOceanieOn = viewModel.isOceanieOn
-        val isAmeriqueNordOn = viewModel.isAmeriqueNordOn
-        val isAmeriqueSudOn = viewModel.isAmeriqueSudOn
+        val isAsieOn = viewModel.isAsiaOn
+        val isAfriqueOn = viewModel.isAfricaOn
+        val isOceanieOn = viewModel.isOceaniaOn
+        val isAmeriqueNordOn = viewModel.isNorthAmericaOn
+        val isAmeriqueSudOn = viewModel.isSouthAmericaOn
 
 
         scoreDirect = view.findViewById(R.id.scoreDirect)
@@ -117,7 +120,7 @@ class FragmentPartie : Fragment() {
                 val json = response.string()
                 val jsonObject = JSONObject(json)
                 val dataArray = jsonObject.getJSONArray("data")
-                val data = Gson().fromJson(dataArray.toString(), Array<CountryData>::class.java)
+                val data = Gson().fromJson(dataArray.toString(), Array<CountryDataClass>::class.java)
 
                 val randomCountry = data.random()
                 val imageUrl = randomCountry.flag
@@ -188,35 +191,15 @@ class FragmentPartie : Fragment() {
                                 Log.d("score", "scoree = ${viewModel.score}")
 
                                 findNavController().navigate(R.id.action_fragment_partie_self)
-
-
-
                             }
                         }
                         parentLayout.addView(button)
-
-
                     }
                 }
 
             } catch (e: Exception) {
                 Log.e("CountryFragment", "Error loading flag image: ${e.message}")
             }
-
-
-
-        // Faire quelque chose avec la valeur
-        Log.d("FragmentPartie", "selectedRadioValue = $selectedRadioValue")
-        scoreDirect.text = "SCORE : ${viewModel.score}"
-
-        Log.d("safe args", "switchValueEurope = ${viewModel.isEuropeOn}  ")
-        Log.d("safe args", "switchValueAsie = ${viewModel.isAsieOn}")
-        Log.d("safe args", "switchValueAfrique = ${viewModel.isAfriqueOn}  ")
-        Log.d("safe args", "switchValueOceanie = ${viewModel.isOceanieOn} ")
-        Log.d("safe args", "switchValueAmeriqueNord = ${viewModel.isAmeriqueNordOn}  ")
-        Log.d("safe args", "switchValueAmeriqueSud = ${viewModel.isAmeriqueSudOn} ")
-
-
         }
 
         return view

@@ -50,7 +50,7 @@ class CountryFragment : Fragment() {
                 val json = response.string()
                 val jsonObject = JSONObject(json)
                 val dataArray = jsonObject.getJSONArray("data")
-                val data = Gson().fromJson(dataArray.toString(), Array<CountryData>::class.java)
+                val data = Gson().fromJson(dataArray.toString(), Array<CountryDataClass>::class.java)
 
                 // get the flag URL for France
                 val fr = data.firstOrNull { it.iso2 == "FR" || it.iso3 == "FRA" }

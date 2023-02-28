@@ -35,9 +35,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-
-
-
         var selectedOption = ""
 
         when(item?.itemId) {
